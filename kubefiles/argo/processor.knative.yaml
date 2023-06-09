@@ -3,23 +3,23 @@ apiVersion: v1
 kind: ServiceAccount
 metadata:
   labels:
-    app.kubernetes.io/name: cameldemo-processor
+    app.kubernetes.io/name: knativequarkusvoter-processor
     app.kubernetes.io/version: 1.0.1-SNAPSHOT
-  name: cameldemo-processor
+  name: knativequarkusvoter-processor
 ---
 apiVersion: serving.knative.dev/v1
 kind: Service
 metadata:
   labels:
-    app.kubernetes.io/name: cameldemo-processor
+    app.kubernetes.io/name: knativequarkusvoter-processor
     app.kubernetes.io/version: 1.0.1-SNAPSHOT
-    app.kubernetes.io/part-of: cameldemo
-  name: cameldemo-processor
+    app.kubernetes.io/part-of: knativequarkusvoter
+  name: knativequarkusvoter-processor
 spec:
   template:
     metadata:
       labels:
-        app.kubernetes.io/name: cameldemo-processor
+        app.kubernetes.io/name: knativequarkusvoter-processor
         app.kubernetes.io/version: 1.0.1-SNAPSHOT
       annotations:
         autoscaling.knative.dev/minScale: '1'
@@ -27,7 +27,7 @@ spec:
     spec:
       containerConcurrency: 0
       containers:
-        - image: quay.io/kevindubois/cameldemo-processor
+        - image: quay.io/kevindubois/knativequarkusvoter-processor
           livenessProbe:
             failureThreshold: 3
             httpGet:
@@ -38,7 +38,7 @@ spec:
             successThreshold: 1
             timeoutSeconds: 10
           imagePullPolicy: IfNotPresent
-          name: cameldemo-processor
+          name: knativequarkusvoter-processor
           ports:
             - containerPort: 8080
               name: http1
@@ -52,7 +52,7 @@ spec:
             periodSeconds: 30
             successThreshold: 1
             timeoutSeconds: 10
-      serviceAccountName: cameldemo-processor
+      serviceAccountName: knativequarkusvoter-processor
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: Role
@@ -69,23 +69,23 @@ rules:
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: cameldemo-processor-view
+  name: knativequarkusvoter-processor-view
 roleRef:
   kind: ClusterRole
   apiGroup: rbac.authorization.k8s.io
   name: view
 subjects:
   - kind: ServiceAccount
-    name: cameldemo-processor
+    name: knativequarkusvoter-processor
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: RoleBinding
 metadata:
-  name: cameldemo-processor-view-secrets
+  name: knativequarkusvoter-processor-view-secrets
 roleRef:
   kind: Role
   apiGroup: rbac.authorization.k8s.io
   name: view-secrets
 subjects:
   - kind: ServiceAccount
-    name: cameldemo-processor
+    name: knativequarkusvoter-processor

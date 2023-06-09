@@ -80,7 +80,7 @@ As you are running in _prod_ mode, you need a Kafka cluster.
 Running On Openshift
 -----------------------
 
-1. Create a new openshift project 'cameldemo' (if you use a different name, make sure to update the respective application.properties files)
+1. Create a new openshift project 'knativequarkusvoter' (if you use a different name, make sure to update the respective application.properties files)
 1. Install the Openshift Serverless (Knative) Operator
 1. Install Openshift Serverless "Knative Serving" component
 1. Install AMQ Streams (Kafka) Operator
@@ -90,7 +90,7 @@ Running On Openshift
 1. Build and deploy the applications.  If you're logged in to Openshift in your terminal, you can run `mvn clean package -Dnative -Dquarkus.kubernetes.deploy` and Quarkus will take care of building native binaries and deploying them to Openshift and it will even configure the wiring to use the secrets and configmaps for you. 
 Alternatively you can also let Quarkus build & push native container images using the Quarkus CLI: `quarkus push --also-build --native --registry=quay.io`.  And then use the kubefiles/argo/* yamls to deploy the applications (eg. using ArgoCD)
 
-you can also build the image and deploy with knative, eg. kn service create cameldemo-processor --env-from cm:appconfig --env-from secret:db --image=quay.io/kevindubois/cameldemo-processor --force
+you can also build the image and deploy with knative, eg. kn service create knativequarkusvoter-processor --env-from cm:appconfig --env-from secret:db --image=quay.io/kevindubois/knativequarkusvoter-processor --force
 
 Bonus Feature
 -------------

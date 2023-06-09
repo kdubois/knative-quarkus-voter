@@ -4,10 +4,10 @@
   <modelVersion>4.0.0</modelVersion>
   <parent>
     <groupId>com.kevindubois</groupId>
-    <artifactId>cameldemo</artifactId>
-    <version>1.0.1-SNAPSHOT</version>
+    <artifactId>knativequarkusvoter</artifactId>
+    <version>1.0</version>
   </parent>
-  <artifactId>cameldemo-ui</artifactId>
+  <artifactId>knativequarkusvoter-ui</artifactId>
   <dependencies>
     <dependency>
       <groupId>io.quarkus</groupId>

@@ -1,4 +1,4 @@
-package com.kevindubois.cameldemo.client;
+package com.kevindubois.knativequarkusvoter.client;
 
 import org.junit.jupiter.api.Test;
 
